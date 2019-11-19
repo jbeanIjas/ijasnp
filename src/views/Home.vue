@@ -1,103 +1,73 @@
-<template>
-	<div class="ani-slideInDown row justify-content-center">
-		<div class="col-lg-6">
-			<ToDoInput @eventAddNewTask="onAddNewTask"/>
 
-			<ul class="list mt-3">
-				<ListItem v-for="item in itemList" :key="item.id" :text="item.text" :id="item.id" :isDone="item.isDone" @eventTaskStatusChange="onTaskStatusChange" @eventTaskDelete="onTaskDelete" />
-			</ul>
-		</div>
-	</div>
+<template>
+  <div>
+    <h1 data-aos="fade">AOS Demo</h1>
+
+    <p data-aos="flip-up" data-aos-duration="1000">
+      AOS is awesome! Thank you
+      <a class="anchor" href="https://twitter.com/michalsnik">
+        Michał Sajnóg
+      </a>
+      😄
+    </p>
+
+    <p data-aos="slide-up" data-aos-easing="ease">
+      Paragraph with fade up animation and <code>ease</code> easing.
+    </p>
+
+    <p data-aos="zoom-in" data-aos-anchor=".anchor">
+      Paragraph with fade down animation with the above link as anchor. This
+      makes this paragraph animate before the previous paragraph starts
+      animating.
+    </p>
+
+    <hr class="my-5" />
+	<ul class="list-unstyled row">
+      <li
+        v-for="(item, index) in img"
+        :key="index"
+        data-aos="fade-down-right"
+        data-aos-delay="500"
+        data-aos-once="true"
+        class="align-items-center col-sm-6 d-flex flex-column justify-content-center mb-5"
+      >
+        <img :src="getImg(item)" class="img-fluid mr-3" />
+
+        <div class="">
+          <h2 class="h4">{{ item }}</h2>
+        </div>
+      </li>
+    </ul>
+    <ul class="list-unstyled row">
+      <li
+        v-for="(item, index) in img"
+        :key="index"
+        data-aos="fade-down-left"
+        data-aos-delay="500"
+        data-aos-once="true"
+        class="align-items-center col-sm-6 d-flex flex-column justify-content-center mb-5"
+      >
+        <img :src="getImg(item)" class="img-fluid mr-3" />
+
+        <div class="">
+          <h2 class="h4">{{ item }}</h2>
+        </div>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-	// @ is an alias to /src
-	import ToDoInput from "@/components/ToDoInput.vue"
-	import ListItem from "@/components/ListItem.vue"
-
-	export default {
-		name: "home",
-		components: {
-			ToDoInput,
-			ListItem
-		},
-		data() {
-            return {
-                itemList: []
-            }
-        },
-        methods: {
-			/**
-			 * Event: add new task
-			 */
-			onAddNewTask(taskName) {
-				const task = {
-					id: (new Date()).getTime(),
-					text: taskName,
-					isDone: false
-				}
-
-				this.itemList.push(task)
-			},
-
-            /**
-             * Event: on task status changed
-             */
-            onTaskStatusChange(id, checked) {
-                console.log(id, checked)
-
-                let item = this.itemList.find(i => i.id == id)
-                if (item) {
-                    item.isDone = checked
-                }
-                
-                console.log(this.itemList)
-            },
-
-            /**
-             * Event: on task deleted
-             */
-            onTaskDelete(id) {
-                console.log(id)
-
-                let index = this.itemList.findIndex(i => i.id == id)
-                if (index > -1) {
-                    this.itemList.splice(index, 1)
-                }
-
-                console.log(this.itemList)
-            },
-
-            /**
-             * Load item list from local storage
-             */
-            loadItemList() {
-                this.itemList = JSON.parse(localStorage.getItem("VuejsTodo")) || []
-
-                console.log("this.itemList =", this.itemList)
-            },
-
-            /**
-             * Update the item list to local storage
-             */
-            updateItemList() {
-                localStorage.setItem("VuejsTodo", JSON.stringify(this.itemList))
-            }
-        },
-        mounted() {
-            // Load item list from local storage
-            this.loadItemList()
-        },
-        watch: {
-            itemList: {
-                handler(value) {
-                    console.log("item changed")
-
-                    // save to localStorage
-                    this.updateItemList()
-                },
-                deep: true
-            }
-        }
-	}
+export default {
+  data() {
+    return {
+      img: ["Animals", "Arch", "Nature", "People", "Tech"]
+    };
+  },
+  methods: {
+    getImg(name) {
+      return "https://placeimg.com/400/225/" + name.toLowerCase();
+    }
+  }
+};
 </script>

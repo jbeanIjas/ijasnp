@@ -1,0 +1,46 @@
+body{
+    background: #fff;
+    font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: $color-1;
+    position: relative;
+    z-index: 5;
+    &:after{
+        content: "";
+    background-image: url(../assets/images/bgtop.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right top;
+    }
+}
+.container{
+    max-width: 1140px;
+}
+section {
+    height: 100vh;
+  }
+
+.AppHeaderBox{
+    padding-top: 20px;
+    position: relative;
+    
+    .HeroLogo{
+       
+        span{
+            display: block;
+            font-size: 30px;
+            font-weight: 400;
+        }
+    }
+    .MainNavBox{
+        display: flex;
+        a{
+            font-family: $font2;
+            font-size: 14px;
+            margin-right: 50px;
+            color: $color-1 ;
+            &:hover{
+                color: $color-2;
+            }
+        }
+    }
+}

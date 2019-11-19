@@ -1,18 +1,38 @@
 <template>
-	<div id="app" class="container py-5">
-		<h1 class="fs-h1 text-center">
-			Vuejs Todo app
-		</h1>
-
-		<div class="nav text-center mt-3">
-			<router-link to="/">Todos</router-link>
-			<router-link to="/about">About</router-link>
-		</div>
-
-		<div class="main-content mt-5">
+	<div id="app">
+		
+		<appHeader/>
+		
+		<div class="main-content">
 			<router-view />
 		</div>
 		
 	</div>
 </template>
+<script>
+	
+	
+	import appHeader from "@/components/appHeader.vue"
+
+	export default {
+		name: "home",
+		components: {
+			appHeader
+		},
+		data() {
+            return {
+                
+            }
+        },
+        methods: {
+			
+        },
+        mounted() {
+        },
+        watch: {
+           
+        }
+	}
+</script>
+
 
