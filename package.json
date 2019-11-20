@@ -6,12 +6,13 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "start": "node server.js"
+    "start": "npm start"
   },
   "dependencies": {
     "aos": "^3.0.0-beta.6",
     "bootstrap-vue": "^2.1.0",
     "vue": "^2.5.17",
+    "vue-carousel": "^0.18.0",
     "vue-router": "^3.0.1",
     "vue-scroll-reveal": "^1.0.11"
   },
